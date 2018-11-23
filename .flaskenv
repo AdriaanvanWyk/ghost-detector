@@ -1,0 +1,1 @@
+FLASK_APP=ghost_site.py
