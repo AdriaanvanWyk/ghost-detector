@@ -21,7 +21,13 @@
         <div class="navbar-nav">
             <a class="nav-item nav-link" href="#">My Profile</a>
             <a class="nav-item nav-link" href="#">My Collection</a>
-            <a class="nav-item nav-link" href="#">Radeem a Ghost</a>
+            <a class="nav-item nav-link" href="#">Redeem a Ghost</a>
+            {% if current_user.is_anonymous %}
+                <a class="nav-item nav-link" href="{{ url_for('login') }}">Login</a>
+            {% else %}
+                Logged in as {{ current_user.username }}
+                <a class="nav-item nav-link" href="{{ url_for('logout') }}">Logout</a>
+            {% endif %}
         </div>
       </div>
     </nav>
