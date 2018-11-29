@@ -18,6 +18,23 @@ class User(UserMixin, db.Model):
         return '<User {}>'.format(self.username)
 
 
+class Ghost(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    type_id = db.Column(db.Integer, db.ForeignKey('ghost_type.id'))
+
+    def __repr__(self):
+        return '<Ghost {}>'.format(self.id)
+
+
+class GhostType(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64), index=True, unique=True)
+
+    def __repr__(self):
+        return '<GhostType {}>'.format(self.name)
+
+
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))
