@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Ghosts</h1>
+    <ul>
+        {% for ghost in ghosts %}
+        <li>
+            {{ghost}}
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
