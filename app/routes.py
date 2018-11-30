@@ -47,6 +47,9 @@ def register():
 
 @app.route('/ghosts', methods=['GET', 'POST'])
 def ghosts():
-    user = User.query.filter_by(username=current_user.username).with_entities(User.id)
-    my_ghosts = Ghost.query.filter_by(user_id = user)
+    user_id = User.query.filter_by(username=current_user.username).with_entities(User.id)
+    ghost_types = GhostType.query.all()
+    my_ghosts = Ghost.query.filter_by(user_id = user_id)
+    for ghost in my_ghosts:
+        ghost.type_id = GhostType.query.filter_by(id=ghost.type_id).with_entities(GhostType.name)
     return render_template('ghosts.html', title='Ghosts', ghosts=my_ghosts)

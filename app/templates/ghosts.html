@@ -2,11 +2,10 @@
 
 {% block content %}
     <h1>Ghosts</h1>
+    {% for ghost in ghosts %}
     <ul>
-        {% for ghost in ghosts %}
-        <li>
-            {{ghost}}
-        </li>
-        {% endfor %}
+        <h2>ID: {{ ghost.id }}</h2>
+        <li>Type: {{ ghost.type_id }}</li>
     </ul>
+    {% endfor %}
 {% endblock %}
