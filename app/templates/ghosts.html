@@ -1,14 +1,26 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Ghosts</h1>
+<h1 class="my-4">Ghosts</h1>
+<div class="row">
     {% for ghost in ghosts %}
-    <ul>
-        <h2>ID: {{ ghost.id }}</h2>
-        <li>Type: {{ ghost.type_id }}</li>
-        <li>Height: {{ ghost.height }}cm</li>
-        <li>Weight: {{ ghost.weight }}kg</li>
-        <li>Time Caught: {{ ghost.caught }}</li>
-    </ul>
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="card text-center border-secondary">
+                <img class="card-img-top mx-auto d-block" src="{{url_for('static', filename='ghost.png')}}" alt="Card Image Cap">
+                <div class="card-header border-secondary">
+                    <h5 class="card-title">{{ ghost.type_id }}</h5>
+                </div>
+                <div class="card-body">
+                    <h6 class="card-subtitle text-muted mb-2">Height</h6>
+                    <p class="card-text">{{ ghost.height }}cm</p>
+                    <h6 class="card-subtitle text-muted mb-2">Weight</h6>
+                    <p class="card-text">{{ ghost.weight }}kg</p>
+                </div>
+                <div class="card-footer border-secondary">
+                    <p class="card-text text-muted">{{ ghost.caught }}</p>
+                </div>
+            </div>
+        </div>
     {% endfor %}
+</div>
 {% endblock %}
