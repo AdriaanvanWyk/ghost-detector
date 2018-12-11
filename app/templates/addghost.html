@@ -1,18 +1,24 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Add Ghost</h1>
-    <form action="" method="post" novalidate>
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.code.label }}<br>
-            {{ form.code(size=32) }}<br>
-            {% for error in form.code.errors %}
-                <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>{{ form.submit() }}</p>
-    </form>
+<h1 class="my-4">Add Ghost</h1>
+<div class="row align-items-center justify-content-center">
+    <div class="col-sm-6">
+        <form action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                <label for="code">Code</label>
+                <input type="text" class="form-control" id="code" name="code" placeholder="Code">
+                {% for error in form.code.errors %}
+                    <p class="text-danger">{{ error }}</p>
+                {% endfor %}
+            </div>
+            <center>
+                <button type="submit" class="btn btn-success">Submit</button>
+            </center>
+        </form>
+    </div>
+</div>
 
-    <p><a href="{{ url_for('ghosts') }}">Return to My Ghosts</a></p>
+<p><a href="{{ url_for('ghosts') }}">Return to My Ghosts</a></p>
 {% endblock %}
