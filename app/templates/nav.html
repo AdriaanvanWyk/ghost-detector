@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="{{ url_for('index') }}">
+        <img src="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2018/04/1525068825bootstrap-logo-png-logo-228.png" width="30" height="30" class="d-inline-block align-top" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            {% if not current_user.is_anonymous %}
+                <a class="nav-item nav-link" href="#">My Profile ({{ current_user.username }})</a>
+                <a class="nav-item nav-link" href="{{ url_for('ghosts') }}">My Ghosts</a>
+                <a class="nav-item nav-link" href="{{ url_for('addghost') }}">Add a Ghost</a>
+                <a class="nav-item nav-link" href="{{ url_for('logout') }}">Logout</a>
+            {% else %}
+                <a class="nav-item nav-link" href="{{ url_for('login') }}">Login</a>
+                <a class="nav-item nav-link" href="{{ url_for('register') }}">Register</a>
+            {% endif %}
+        </div>
+    </div>
+</nav>
