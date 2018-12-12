@@ -22,9 +22,9 @@
             </div>
             <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
             <center>
-                <button type="submit" class="btn btn-success">Login</button>
+                <button type="submit" class="btn btn-block btn-primary">Login</button>
             </center>
         </form>
-        <p class="mt-2">New User? <a href="{{ url_for('register') }}">Click to Register!</a></    </div>
+        <p class="mt-2">New User? <a href="{{ url_for('register') }}">Click to Register!</a></div>
 </div>
 {% endblock %}
