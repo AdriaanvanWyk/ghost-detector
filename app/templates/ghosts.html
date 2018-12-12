@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='ghosts.css') }}">
+{% endblock %}
+
+{% block content %}
+<h1 class="my-4">Ghosts</h1>
+<div class="row">
+    {% for ghost in ghosts %}
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="card text-center border-secondary">
+                <img class="mx-auto my-3 d-block ghost-img" src="
+                {% if ghost.type_id == 'Ghost' %}
+                    {{ url_for('static', filename='ghost.png') }}
+                {% elif ghost.type_id == 'Phantom' %}
+                    {{ url_for('static', filename='phantom.png') }}
+                {% elif ghost.type_id == 'Poltergeist' %}
+                    {{ url_for('static', filename='poltergeist.png') }}
+                {% endif %}" alt="Card Image Cap">
+                <div class="card-header border-secondary">
+                    <h5 class="card-title">{{ ghost.type_id }}</h5>
+                </div>
+                <div class="card-body">
+                    <h6 class="card-subtitle text-muted mb-2">Height</h6>
+                    <p class="card-text">{{ ghost.height }}cm</p>
+                    <h6 class="card-subtitle text-muted mb-2">Weight</h6>
+                    <p class="card-text">{{ ghost.weight }}kg</p>
+                </div>
+                <div class="card-footer border-secondary">
+                    <p class="card-text text-muted">{{ ghost.caught }}</p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
